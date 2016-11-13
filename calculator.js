@@ -16,7 +16,29 @@ function calculatorModule() {
    * @param  { Number } x
    * @return { Number }    current total
    */
+    function _validations(x){
+    if (typeof x !== 'number'){
+     throw new Error(`Invalid input type: ${x} is not a Number`);
+    }
+  //   return null;
+    }
+
+   // function load(x){
+   //  let err = _validations(x);
+   //  if( err ){
+   //    // handle more gracefully
+   //    //  maybe rollback something
+   //    //  maybe log this error, then throw
+   //    //  definitely, give user some feedback
+   //    throw err;
+   //  }
+   //  // continue normal operations
+   //  _total = x;
+   //  return _total;
+  // }
+
    function _load(x) {
+     _validations(x);
      _total = x;
 
     return _total;
@@ -39,6 +61,7 @@ function calculatorModule() {
    * @param { Number } x
    */
    function _add(x) {
+     _validations(x);
      _total += x;
    }
 
@@ -51,6 +74,7 @@ function calculatorModule() {
    * @param  { Number } x
    */
    function _subtract(x) {
+     _validations(x);
      _total -= x;
    }
 
@@ -59,6 +83,7 @@ function calculatorModule() {
    * @param  { Number } x
    */
    function _multiply(x) {
+     _validations(x);
      _total *= x;
    }
 
@@ -68,6 +93,7 @@ function calculatorModule() {
    * @param  { Number } x
    */
    function _divide(x) {
+     _validations(x);
      _total /= x;
    }
 
@@ -102,11 +128,11 @@ function calculatorModule() {
   /**
    * Validation
    */
-function _validate(x) {
+// function _validate(x) {
 
 
 
-}
+// }
 
    return {
     load: _load,
@@ -117,8 +143,8 @@ function _validate(x) {
     divide: _divide,
     recallMemory: _recallMemory,
     saveMemory: _saveMemory,
-    clearMemory: _clearMemory,
-    validate: _validate
+    clearMemory: _clearMemory
+    // validate: _validations
    };
 
 }
